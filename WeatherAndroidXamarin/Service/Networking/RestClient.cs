@@ -1,3 +1,4 @@
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace WeatherAndroidXamarin.Service.Networking
@@ -7,7 +8,7 @@ namespace WeatherAndroidXamarin.Service.Networking
         public async Task<string> GetAsync(string uri)
         {
 
-            var httpClient = new HttpC
+            var httpClient = new HttpClient();
             var responce = await httpClient.GetAsync(uri);
             var content = await responce.Content.ReadAsStringAsync();
             return content;
