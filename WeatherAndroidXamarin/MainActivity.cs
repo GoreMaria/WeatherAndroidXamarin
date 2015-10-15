@@ -56,7 +56,7 @@ namespace WeatherAndroidXamarin
 
 
             _currentDateTextView.Text = DateTime.Today.ToString("M");
-            _tomorrowDateTextView.Text = now.AddDays(1).ToString("dd - MM - yy");
+            _tomorrowDateTextView.Text = now.AddDays(1).ToString("dd-MM-yy");
             _theDayAfterTomorrowDateTextView.Text = now.AddDays(2).ToString("dd-MM-yy");
             _theDayAfterAfterTomorrowDateTextView.Text = now.AddDays(3).ToString("dd-MM-yy");
 
@@ -80,7 +80,7 @@ namespace WeatherAndroidXamarin
 
             var theDayAfterAfterTomorrow = await _ws.GetForecastForTheDayAfterAfterTomorrow(_editText.Text);
             _temperatureTheDayAfterAfterTomorrowTextView.Text = theDayAfterAfterTomorrow.Temperature + "°C";
-            _humidityTheDayAfterTomorrowTextView.Text = theDayAfterAfterTomorrow.Humidity + "%";
+            _humidityTheDayAfterAfterTomorrowTextView.Text = theDayAfterAfterTomorrow.Humidity + "%";
 
         }
     }
