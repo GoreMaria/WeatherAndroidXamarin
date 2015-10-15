@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using Android.App;
 using Android.OS;
 using Android.Widget;
@@ -9,6 +10,7 @@ namespace WeatherAndroidXamarin
     [Activity(Label = "WeatherAndroidXamarin", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
+        private Button _button;
         private TextView _currentDateTextView;
         private EditText _editText;
         private TextView _humidityTextView;
@@ -28,15 +30,15 @@ namespace WeatherAndroidXamarin
         {
             base.OnCreate(bundle);
             _ws = new WeatherService();
-            var now = DateTime.Now;
-
-
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
+            SetControls();
+            SetDates();
+            _button.Click += SearchWeather;
+        }
 
-            // Get our button from the layout resource,
-            // and attach an event to it
-            var button = FindViewById<Button>(Resource.Id.MyButton);
+        private void SetControls()
+        {
+            _button = FindViewById<Button>(Resource.Id.MyButton);
             _editText = FindViewById<EditText>(Resource.Id.EditText);
 
             _currentDateTextView = FindViewById<TextView>(Resource.Id.CurrentDateTextView);
@@ -53,19 +55,21 @@ namespace WeatherAndroidXamarin
             _humidityTomorrowTextView = FindViewById<TextView>(Resource.Id.HumidityTomorrowTextView);
             _humidityTheDayAfterTomorrowTextView = FindViewById<TextView>(Resource.Id.HumidityTheDayAfterTomorrowTextView);
             _humidityTheDayAfterAfterTomorrowTextView = FindViewById<TextView>(Resource.Id.HumidityTheDayAfterAfterTomorrowTextView);
+        }
 
-
+        private void SetDates()
+        {
+            var now = DateTime.Now;
             _currentDateTextView.Text = DateTime.Today.ToString("M");
             _tomorrowDateTextView.Text = now.AddDays(1).ToString("dd-MM-yy");
             _theDayAfterTomorrowDateTextView.Text = now.AddDays(2).ToString("dd-MM-yy");
             _theDayAfterAfterTomorrowDateTextView.Text = now.AddDays(3).ToString("dd-MM-yy");
-
-
-            button.Click += SearchWeather;
         }
 
         private async void SearchWeather(object sender, EventArgs e)
         {
+            if (!IsCityNameValid(_editText.Text))
+                return;
             var result = await _ws.GetForecastForToday(_editText.Text);
             _temperatureTextView.Text = result.Temperature + "°C";
             _humidityTextView.Text = result.Humidity + "%";
@@ -82,6 +86,11 @@ namespace WeatherAndroidXamarin
             _temperatureTheDayAfterAfterTomorrowTextView.Text = theDayAfterAfterTomorrow.Temperature + "°C";
             _humidityTheDayAfterAfterTomorrowTextView.Text = theDayAfterAfterTomorrow.Humidity + "%";
 
+        }
+
+        private bool IsCityNameValid(string cityName)
+        {
+            return Regex.IsMatch(cityName, @"^[^0-9\#\$\@\+]*$");
         }
     }
 }

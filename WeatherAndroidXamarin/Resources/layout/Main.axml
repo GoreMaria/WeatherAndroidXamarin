@@ -47,16 +47,16 @@
         android:id="@+id/dfTextView"
         android:layout_below="@id/TemperatureTextView"
         android:layout_marginTop="20dip"
-        android:textSize="30dip" />
+        android:textSize="20dip" />
     <TextView
-        android:text="11-11-11"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/TomorrowDateTextView"
         android:layout_below="@id/dfTextView"
         android:layout_marginTop="20dip" />
     <TextView
-        android:text="22-22-22"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/DayAfterTomorrowDateTextView"
@@ -65,7 +65,7 @@
         android:layout_marginLeft="81dip"
         android:layout_below="@id/dfTextView" />
     <TextView
-        android:text="33-33-33"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/DayAfterAfterTomorrowDateTextView"
@@ -74,14 +74,14 @@
         android:layout_marginLeft="81dip"
         android:layout_below="@id/dfTextView" />
     <TextView
-        android:text="40%"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/HumidityTomorrowTextView"
         android:layout_marginTop="20dip"
         android:layout_below="@id/TomorrowDateTextView" />
     <TextView
-        android:text="50%"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/HumidityTheDayAfterTomorrowTextView"
@@ -90,7 +90,7 @@
         android:layout_marginLeft="110dip"
         android:layout_below="@id/DayAfterTomorrowDateTextView" />
     <TextView
-        android:text="60%"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/HumidityTheDayAfterAfterTomorrowTextView"
@@ -99,14 +99,14 @@
         android:layout_marginLeft="110dip"
         android:layout_below="@id/DayAfterAfterTomorrowDateTextView" />
     <TextView
-        android:text="7*C"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/TemperatureTomorrowTextView"
         android:layout_marginTop="20dip"
         android:layout_below="@id/HumidityTomorrowTextView" />
     <TextView
-        android:text="8*C"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/TemperatureTheDayAfterTomorrowTextView"
@@ -115,7 +115,7 @@
         android:layout_marginLeft="115dip"
         android:layout_below="@id/HumidityTheDayAfterTomorrowTextView" />
     <TextView
-        android:text="9*C"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/TemperatureTheDayAfterAfterTomorrowTextView"
