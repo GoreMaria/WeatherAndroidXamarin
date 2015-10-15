@@ -9,6 +9,7 @@ namespace WeatherAndroidXamarin.Service.Weather
     public class WeatherService : IWeatherService
     {
         private const string GetForecastUI = "http://api.openweathermap.org/data/2.5/forecast?q=";
+        private const string AppID = "&APPID=796fc5d2ebcbb4206a4f0ab759a0f904";
         private readonly IRestClient _restClient = new RestClient();
 
         public async Task<Forecast> GetForecastForToday(string city)
@@ -38,7 +39,7 @@ namespace WeatherAndroidXamarin.Service.Weather
 
         private async Task<ForecastResponce> ReturnResponce(string city)
         {
-            var uri = GetForecastUI + city;
+            var uri = GetForecastUI + city + AppID;
             var responce = await _restClient.GetAsync(uri);
             return JsonConvert.DeserializeObject<ForecastResponce>(responce);
         }

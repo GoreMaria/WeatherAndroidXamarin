@@ -7,9 +7,9 @@ namespace WeatherAndroidXamarin.Service.Networking
     {
         public async Task<string> GetAsync(string uri)
         {
-
             var httpClient = new HttpClient();
-            var responce = await httpClient.GetAsync(uri);
+            var adress = httpClient.BaseAddress;
+            var responce = await httpClient.GetAsync(uri).ConfigureAwait(false);
             var content = await responce.Content.ReadAsStringAsync();
             return content;
         }
